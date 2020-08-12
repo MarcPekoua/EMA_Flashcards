@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <item name="toolbar" type="id" />
+    <item name="Statview" type="id" />
+    <item name="Stathead" type="id" />
 </resources>

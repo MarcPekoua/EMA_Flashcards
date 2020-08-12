@@ -16,6 +16,11 @@
             android:title="@string/menu_cardlist" />
 
         <item
+            android:id="@+id/nav_statistic"
+            android:icon="@drawable/ic_statistic"
+            android:title="Statistik"/>
+
+        <item
             android:id="@+id/menu_darkmode"
             android:title="@string/menu_darkmode"
             app:actionViewClass="androidx.appcompat.widget.SwitchCompat"

@@ -27,4 +27,8 @@
     <string name="flashcardMiddleTime">Es Geht So</string>
     <string name="flashcardLongTime">Gut</string>
     <string name="menu_darkmode">Darkmode</string>
+    <string name="statistic_select">Wählen Sie ein Modul aus</string>
+    <string name="ModulText">Modul</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

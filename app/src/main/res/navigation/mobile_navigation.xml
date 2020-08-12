@@ -17,6 +17,20 @@
         <action
             android:id="@+id/action_nav_home_to_nav_flashcard"
             app:destination="@id/nav_flashcard" />
+        <action
+            android:id="@+id/action_nav_home_to_nav_statistic"
+            app:destination="@id/nav_statistic" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_statistic"
+        android:name="de.hsworms.flashcards.ui.statistic.statisticfragment"
+        android:label="Statistic"
+        tools:layout="@layout/fragment_statistic">
+
+        <action
+            android:id="@+id/action_nav_statistic_to_nav_home"
+            app:destination="@id/nav_home" />
     </fragment>
 
     <fragment
