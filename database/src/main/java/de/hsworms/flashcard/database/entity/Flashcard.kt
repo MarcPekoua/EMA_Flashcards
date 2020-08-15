@@ -13,9 +13,12 @@ open class Flashcard (
 @Entity(tableName = "flashcard_normal", foreignKeys = [ForeignKey(entity = Flashcard::class, parentColumns = ["cardId"], childColumns = ["cardId"], onDelete = ForeignKey.CASCADE)])
 data class FlashcardNormal (
     val front: String,
-    val back: String
+    val back: String,
+    val access: String,
+    val create: String
 ) : Flashcard(type = 0) {
-    constructor(cardId: Long?, front: String, back: String) : this(front, back) {
+    constructor(cardId: Long?, front: String, back: String, create: String, access: String) : this(front, back, create, access) {
         super<Flashcard>.cardId = cardId
     }
+
 }

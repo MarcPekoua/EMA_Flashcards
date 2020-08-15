@@ -19,6 +19,8 @@ import kotlinx.android.synthetic.main.header_layout_flashcard.*
 import kotlinx.android.synthetic.main.sec_header_time_view.*
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
+import java.text.DateFormat
+import java.util.*
 import kotlin.math.roundToInt
 
 class FlashcardFragment : Fragment() {
@@ -98,8 +100,17 @@ class FlashcardFragment : Fragment() {
 
         activeCard = cardList.removeAt(0)
 
+
         flashcardQuestionTextView.text = (activeCard.card as FlashcardNormal).front
         flashcardAnswerTextView.text = (activeCard.card as FlashcardNormal).back
+
+        GlobalScope.launch {
+            val calendar = Calendar.getInstance()
+            val date = DateFormat.getDateInstance(DateFormat.SHORT).format(calendar.time)
+            val fn = FlashcardNormal(activeCard.card.cardId, (activeCard.card as FlashcardNormal).front, (activeCard.card as FlashcardNormal).back,date,(activeCard.card as FlashcardNormal).access)
+            FCDatabase.getDatabase(requireContext()).flashcardDao().update(fn)
+
+        }
 
         flashcardAnswerGroup.visibility = View.GONE
         flashcardQuestionGroup.visibility = View.VISIBLE

@@ -19,6 +19,8 @@ import kotlinx.android.synthetic.main.fragment_edit.*
 import kotlinx.android.synthetic.main.header_layout_generic.*
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
+import java.text.DateFormat
+import java.util.*
 
 class EditFragment : Fragment() {
 
@@ -76,6 +78,8 @@ class EditFragment : Fragment() {
     private fun saveCard() {
         val front = cardEditFront.text.toString()
         val back = cardEditBack.text.toString()
+        val calendar = Calendar.getInstance()
+        val date = DateFormat.getDateInstance(DateFormat.SHORT).format(calendar.time)
         if(front.isEmpty()) {
             Toast.makeText(requireContext(), "Bitte geben Sie eine Vorderseite an!", Toast.LENGTH_SHORT).show()
             return
@@ -86,7 +90,7 @@ class EditFragment : Fragment() {
         }
 
         GlobalScope.launch {
-            val fn = FlashcardNormal(cross?.cardId, front, back)
+            val fn = FlashcardNormal(cross?.cardId, front, back, date, date)
             var id = cross?.cardId
             if(cross == null) {
                 id = FCDatabase.getDatabase(requireContext()).flashcardDao().insert(fn)[0]

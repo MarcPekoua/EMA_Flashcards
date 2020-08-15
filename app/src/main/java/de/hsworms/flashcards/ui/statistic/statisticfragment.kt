@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -44,22 +45,8 @@ class statisticfragment: Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        Statview?.adapter = StatAdapter(this)
-        TabLayoutMediator(Stathead, Statview){
-            Stathead, position -> Statview.setCurrentItem(Stathead.position, true)
-            when (position) {
-                0 -> {
-                    Stathead.setText("StatFrag1")
-                }
-                1 -> {
-                    Stathead.setText("StatFrag2")
-                }
-                2 -> {
-                    Stathead.setText("StatFrag3")
-                }
 
-            }
-        }.attach()
+
         statviewmodel.text.observe(viewLifecycleOwner, Observer {  })
 
         headerHeadlineTextView.text = "Statistik"
@@ -69,9 +56,36 @@ class statisticfragment: Fragment() {
             val repos = FCDatabase.getDatabase(requireContext()).repositoryDao().getAllRepositoriesWithCards().toTypedArray()
             requireActivity().runOnUiThread {
                 ModulStatSpinner.adapter = RepositoryAdapter(requireContext(), android.R.layout.simple_spinner_item, repos)
+
             }
         }
 
+        ModulStatSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onNothingSelected(p0: AdapterView<*>?) {
+                TODO("Not yet implemented")
+            }
+
+            override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
+                val repo = ModulStatSpinner.selectedItem as RepositoryWithCards
+                Statview?.adapter = StatAdapter(this@statisticfragment, repo)
+                TabLayoutMediator(Stathead, Statview){
+                        Stathead, position -> Statview.setCurrentItem(Stathead.position, true)
+                    when (position) {
+                        0 -> {
+                            Stathead.setText("StatFrag1")
+                        }
+                        1 -> {
+                            Stathead.setText("StatFrag2")
+                        }
+                        2 -> {
+                            Stathead.setText("StatFrag3")
+                        }
+
+                    }
+                }.attach()
+            }
+
+        }
 
     }
 }
