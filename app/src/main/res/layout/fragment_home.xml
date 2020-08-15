@@ -28,7 +28,9 @@
             app:layout_constraintHorizontal_bias="0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/fragmentHomeHeaderConstraintLayout"
-            tools:listitem="@layout/list_item_card_set" />
+            tools:listitem="@layout/list_item_card_set"
+            android:paddingBottom="100dp"
+            android:clipToPadding="false"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -52,6 +54,6 @@
         app:backgroundTint='@color/colorAppBarBackground'
         app:layout_anchor="@id/bottomAppBar"
         app:maxImageSize="35dp"
-        app:tint='@color/colorwhite' />
+        app:tint='@color/colorWhite' />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
