@@ -1,5 +1,6 @@
 package de.hsworms.flashcards.ui.statistic
 
+import android.graphics.Typeface
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,12 +12,9 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.google.android.material.tabs.TabLayoutMediator
 import de.hsworms.flashcard.database.FCDatabase
-import de.hsworms.flashcard.database.entity.FlashcardNormal
 import de.hsworms.flashcard.database.entity.RepositoryWithCards
 import de.hsworms.flashcards.R
 import de.hsworms.flashcards.ui.edit.RepositoryAdapter
-import de.hsworms.flashcards.ui.statistic.StatAdapter
-import kotlinx.android.synthetic.main.fragment_gallery.bottomAppBar
 import kotlinx.android.synthetic.main.fragment_statistic.*
 import kotlinx.android.synthetic.main.header_layout_generic.*
 import kotlinx.coroutines.GlobalScope
@@ -72,7 +70,8 @@ class statisticfragment: Fragment() {
                         Stathead, position -> Statview.setCurrentItem(Stathead.position, true)
                     when (position) {
                         0 -> {
-                            Stathead.setText("StatFrag1")
+                            Stathead.setText("Übersicht")
+
                         }
                         1 -> {
                             Stathead.setText("StatFrag2")

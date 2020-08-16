@@ -14,10 +14,12 @@ open class Flashcard (
 data class FlashcardNormal (
     val front: String,
     val back: String,
-    val access: String,
-    val create: String
+    val create: String,
+    val access_date: String,
+    val access_number: Int,
+    val negative_result: Int
 ) : Flashcard(type = 0) {
-    constructor(cardId: Long?, front: String, back: String, create: String, access: String) : this(front, back, create, access) {
+    constructor(cardId: Long?, front: String, back: String, create: String, access: String, a_number: Int, n_result: Int) : this(front, back, create, access, a_number, n_result) {
         super<Flashcard>.cardId = cardId
     }
 

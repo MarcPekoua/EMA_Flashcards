@@ -4,11 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#E7E8EA"
     tools:context=".ui.statistic.statisticfragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:backgroundTint="#151313">
 
         <include
             android:id="@+id/fragmentHomeHeaderConstraintLayout"
@@ -21,12 +23,13 @@
 
         <TextView
             android:id="@+id/ModulText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="25dp"
-            android:layout_marginTop="25dp"
-            android:text="@string/ModulText"
-            android:textSize="20sp"
+            android:layout_width="78dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="15dp"
+            android:backgroundTint="#FFFFFF"
+            android:text="Modul"
+            android:textSize="22sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/fragmentHomeHeaderConstraintLayout" />
@@ -36,7 +39,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="25dp"
-            android:layout_marginTop="25dp"
+            android:layout_marginTop="15dp"
             android:layout_marginRight="25dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/ModulText"
@@ -48,11 +51,14 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="11dp"
+            android:background="@color/colorPrimaryDark"
+            android:textAlignment="center"
             app:layout_constraintBottom_toTopOf="@+id/Statview"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/ModulStatSpinner"
+            app:tabTextColor="@color/colorWhite"
             tools:ignore="MissingConstraints">
 
 
@@ -63,6 +69,7 @@
             android:layout_width="420dp"
             android:layout_height="468dp"
             android:layout_marginTop="11dp"
+            android:backgroundTint="#1C1B1B"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -76,21 +83,20 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
-        app:backgroundTint="#808080"
+        app:backgroundTint="#0B4CD9"
         app:fabCradleMargin="7dp"
         app:fabCradleRoundedCornerRadius="27dp"
         app:fabCradleVerticalOffset="5dp"
-        app:menu='@menu/app_bar_menu'
         app:navigationIcon="@drawable/ic_back" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/bottomAppBarFab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/ic_add"
-        app:backgroundTint='@color/colorAppBarBackground'
+        android:src="@drawable/ic_baseline_check_24"
+        app:backgroundTint='#0B4CD9'
         app:layout_anchor="@id/bottomAppBar"
         app:maxImageSize="35dp"
-        app:tint='@color/colorwhite' />
+        app:tint='@color/colorWhite' />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

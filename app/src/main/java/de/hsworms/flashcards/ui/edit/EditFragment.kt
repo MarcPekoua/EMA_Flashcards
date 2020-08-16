@@ -90,7 +90,7 @@ class EditFragment : Fragment() {
         }
 
         GlobalScope.launch {
-            val fn = FlashcardNormal(cross?.cardId, front, back, date, date)
+            val fn = FlashcardNormal(cross?.cardId, front, back, date, date, 0, 0)
             var id = cross?.cardId
             if(cross == null) {
                 id = FCDatabase.getDatabase(requireContext()).flashcardDao().insert(fn)[0]

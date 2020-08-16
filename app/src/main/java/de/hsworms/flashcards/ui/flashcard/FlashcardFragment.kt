@@ -107,7 +107,8 @@ class FlashcardFragment : Fragment() {
         GlobalScope.launch {
             val calendar = Calendar.getInstance()
             val date = DateFormat.getDateInstance(DateFormat.SHORT).format(calendar.time)
-            val fn = FlashcardNormal(activeCard.card.cardId, (activeCard.card as FlashcardNormal).front, (activeCard.card as FlashcardNormal).back,date,(activeCard.card as FlashcardNormal).access)
+            val temp: FlashcardNormal = activeCard.card as FlashcardNormal
+            val fn = FlashcardNormal(activeCard.card.cardId, temp.front, temp.back,temp.create, date, temp.access_number+1, temp.negative_result )
             FCDatabase.getDatabase(requireContext()).flashcardDao().update(fn)
 
         }
@@ -135,6 +136,12 @@ class FlashcardFragment : Fragment() {
         val vc = ViewCard(activeCard.card, 1, 0, activeCard.ef)
         cardList.add(vc)
         nextCard()
+        GlobalScope.launch {
+            val temp: FlashcardNormal = activeCard.card as FlashcardNormal
+            val fn = FlashcardNormal(activeCard.card.cardId, temp.front, temp.back,temp.create, temp.access_date, temp.access_number, temp.negative_result+1 )
+            FCDatabase.getDatabase(requireContext()).flashcardDao().update(fn)
+
+        }
     }
 
     private fun middleTime() {

@@ -1,5 +1,6 @@
 package de.hsworms.flashcards.ui.statistic
 
+import android.graphics.Typeface
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -19,6 +20,8 @@ class StatFrag1(repo: RepositoryWithCards) : Fragment() {
     val parameter = repo
     val listCreate = mutableListOf<String>()
     val listAccess = mutableListOf<String>()
+    val anzahl_access = mutableListOf<Int>()
+    val anzaahl_negative_result = mutableListOf<Int>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -34,20 +37,23 @@ class StatFrag1(repo: RepositoryWithCards) : Fragment() {
             parameter.cards.forEach {
                 it.cardId
                 it.type
-                val fc: FlashcardNormal = FCDatabase.getDatabase(requireContext()).flashcardDao().getOne(it.cardId!!)!! as FlashcardNormal
+                val fc: FlashcardNormal =
+                    FCDatabase.getDatabase(requireContext()).flashcardDao().getOne(it.cardId!!)!! as FlashcardNormal
                 val create = fc.create
-                val access = fc.access
+                val access = fc.access_date
                 listCreate.add(create)
-                listAccess.add(fc.access)
+                listAccess.add(access)
+                anzahl_access.add(fc.access_number)
+                anzaahl_negative_result.add(fc.negative_result)
             }
 
             requireActivity().runOnUiThread {
-                Test.text=parameter.repository.name +"\n"+listCreate+"\n"+listAccess
+                //val type: Typeface = Typeface.createFromAsset(context?.assets, "fonts/arial.ttf")
+                Test.text = parameter.repository.name + "\n" + listCreate + "\n" + listAccess + "\n" + anzahl_access
+                textView2.text=anzaahl_negative_result.toString()
+                //textView2.setTypeface(type)
             }
         }
     }
-
-
-
 
 }
