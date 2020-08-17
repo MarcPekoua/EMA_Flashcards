@@ -74,7 +74,7 @@ class statisticfragment: Fragment() {
 
                         }
                         1 -> {
-                            Stathead.setText("StatFrag2")
+                            Stathead.setText("Grafik")
                         }
                         2 -> {
                             Stathead.setText("StatFrag3")
