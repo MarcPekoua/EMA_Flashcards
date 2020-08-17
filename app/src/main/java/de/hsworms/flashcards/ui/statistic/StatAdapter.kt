@@ -15,7 +15,7 @@ class StatAdapter(fm: Fragment, repo: RepositoryWithCards?): FragmentStateAdapte
     override fun createFragment(position: Int): Fragment {
         when (position){
             0 -> {return StatFrag1(Par)}
-            1 -> {return StatFrag2()}
+            1 -> {return StatFrag2(Par)}
             2 -> {return StatFrag3()}
             else -> {return StatFrag1(Par)}
         }

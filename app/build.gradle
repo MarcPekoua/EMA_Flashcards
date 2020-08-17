@@ -37,7 +37,9 @@ android {
     }
 
 }
-
+repositories {
+    maven { url 'https://jitpack.io' }
+}
 dependencies {
     // Room Deps
     def room_version = "2.2.5"
@@ -71,5 +73,8 @@ dependencies {
 
     //viewpager2
     implementation 'androidx.viewpager2:viewpager2:1.0.0-rc01'
+
+    //Pie Chart
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
 
 }
