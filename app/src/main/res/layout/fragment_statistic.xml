@@ -4,13 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#E7E8EA"
+    android:background="@color/statbackground"
     tools:context=".ui.statistic.statisticfragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:backgroundTint="#151313">
+        android:backgroundTint="@color/statbackground">
 
         <include
             android:id="@+id/fragmentHomeHeaderConstraintLayout"
@@ -27,8 +27,8 @@
             android:layout_height="30dp"
             android:layout_marginStart="24dp"
             android:layout_marginTop="15dp"
-            android:backgroundTint="#FFFFFF"
-            android:text="Modul"
+            android:backgroundTint="@color/colorWhite"
+            android:text="@string/statmodul"
             android:textSize="22sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
@@ -47,7 +47,7 @@
 
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/Stathead"
-            android:layout_width="409dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="11dp"
@@ -66,10 +66,9 @@
 
         <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/Statview"
-            android:layout_width="420dp"
-            android:layout_height="468dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginTop="11dp"
-            android:backgroundTint="#1C1B1B"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -83,7 +82,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
-        app:backgroundTint="#0B4CD9"
+        app:backgroundTint="@color/colorAccent"
         app:fabCradleMargin="7dp"
         app:fabCradleRoundedCornerRadius="27dp"
         app:fabCradleVerticalOffset="5dp"
@@ -94,7 +93,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/ic_baseline_check_24"
-        app:backgroundTint='#0B4CD9'
+        app:backgroundTint="@color/colorAccent"
         app:layout_anchor="@id/bottomAppBar"
         app:maxImageSize="35dp"
         app:tint='@color/colorWhite' />

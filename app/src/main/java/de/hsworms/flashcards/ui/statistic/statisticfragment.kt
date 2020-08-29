@@ -10,16 +10,21 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.fragment.findNavController
 import com.google.android.material.tabs.TabLayoutMediator
 import de.hsworms.flashcard.database.FCDatabase
 import de.hsworms.flashcard.database.entity.RepositoryWithCards
 import de.hsworms.flashcards.R
 import de.hsworms.flashcards.ui.edit.RepositoryAdapter
+import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.fragment_statistic.*
+import kotlinx.android.synthetic.main.fragment_statistic.bottomAppBar
+import kotlinx.android.synthetic.main.fragment_statistic.bottomAppBarFab
 import kotlinx.android.synthetic.main.header_layout_generic.*
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
+//Statistik Hauptseite
 
 class statisticfragment: Fragment() {
     private lateinit var statviewmodel : StatisticViewModel
@@ -44,11 +49,15 @@ class statisticfragment: Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        bottomAppBar.setOnClickListener {
+            findNavController().navigate(R.id.nav_home)
+        }
 
         statviewmodel.text.observe(viewLifecycleOwner, Observer {  })
 
         headerHeadlineTextView.text = "Statistik"
         headerSublineTextView.text = ""
+
 
         GlobalScope.launch {
             val repos = FCDatabase.getDatabase(requireContext()).repositoryDao().getAllRepositoriesWithCards().toTypedArray()
@@ -58,10 +67,13 @@ class statisticfragment: Fragment() {
             }
         }
 
+        //Check selected Daten un set Headear Statitik
         ModulStatSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onNothingSelected(p0: AdapterView<*>?) {
-                TODO("Not yet implemented")
+                return
             }
+
+            //Generate a Statistik view
 
             override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
                 val repo = ModulStatSpinner.selectedItem as RepositoryWithCards

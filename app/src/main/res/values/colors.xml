@@ -5,4 +5,6 @@
     <color name="colorAccent">#0B4CD9</color>
     <color name="colorWhite">#FFFFFF</color>
     <color name="colorAppBarBackground">#363742</color>
+    <color name="statbackground">#E7E8EA</color>
+    <color name="colorDark">#000000</color>
 </resources>

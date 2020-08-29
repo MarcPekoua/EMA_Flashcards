@@ -57,4 +57,10 @@
     <string name="dialog_name_et">Kartenstapel</string>
     <string name="dialog_rename_btn">Umbenennen</string>
     <string name="dialog_rn_cancel_btn">Abbrechen</string>
+
+    <!-- Statistik-->
+
+    <string name="statmodul">Modul</string>
+    <string name="heute">heute</string>
+    <string name="monat">Letzte 30 Tage</string>
 </resources>

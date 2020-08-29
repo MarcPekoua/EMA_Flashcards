@@ -7,11 +7,12 @@ import androidx.viewpager2.adapter.FragmentStateAdapter
 import de.hsworms.flashcard.database.entity.RepositoryWithCards
 
 class StatAdapter(fm: Fragment, repo: RepositoryWithCards?): FragmentStateAdapter(fm) {
-    val Par= repo!!;
+    val Par= repo!!
     override fun getItemCount(): Int {
         return 3
     }
 
+    //Verbindung zwischen die verschiedene Fragmente und die Hauptseite der Statistisk
     override fun createFragment(position: Int): Fragment {
         when (position){
             0 -> {return StatFrag1(Par)}
