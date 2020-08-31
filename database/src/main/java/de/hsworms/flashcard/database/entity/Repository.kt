@@ -20,6 +20,7 @@ data class RepositoryCardCrossRef(
     val cardId: Long,
     val nextDate: Long,
     val interval: Int
+
 ) : Serializable
 
 data class RepositoryWithCards (

@@ -1,7 +1,6 @@
 package de.hsworms.flashcards.ui.edit
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -21,6 +20,7 @@ import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import java.text.DateFormat
 import java.util.*
+import kotlin.collections.ArrayList
 
 class EditFragment : Fragment() {
 
@@ -93,6 +93,7 @@ class EditFragment : Fragment() {
             val fn = FlashcardNormal(cross?.cardId, front, back, date, date, 0, 0)
             var id = cross?.cardId
             if(cross == null) {
+                val tmp:MutableList<String> = ArrayList()
                 id = FCDatabase.getDatabase(requireContext()).flashcardDao().insert(fn)[0]
                 val cross = RepositoryCardCrossRef((repositorySpinner.selectedItem as RepositoryWithCards).repository.repoId!!, id!!, 0, 0)
                 FCDatabase.getDatabase(requireContext()).repositoryDao().addCard(cross)

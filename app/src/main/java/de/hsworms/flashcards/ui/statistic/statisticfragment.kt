@@ -89,7 +89,7 @@ class statisticfragment: Fragment() {
                             Stathead.setText("Grafik")
                         }
                         2 -> {
-                            Stathead.setText("StatFrag3")
+                            Stathead.setText("Termin")
                         }
 
                     }

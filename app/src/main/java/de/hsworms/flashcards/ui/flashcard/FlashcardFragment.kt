@@ -104,15 +104,7 @@ class FlashcardFragment : Fragment() {
 
         flashcardQuestionTextView.text = (activeCard.card as FlashcardNormal).front
         flashcardAnswerTextView.text = (activeCard.card as FlashcardNormal).back
-
-        /*GlobalScope.launch {
-            val calendar = Calendar.getInstance()
-            val date = DateFormat.getDateInstance(DateFormat.SHORT).format(calendar.time)
-            val temp: FlashcardNormal = activeCard.card as FlashcardNormal
-            val fn = FlashcardNormal(activeCard.card.cardId, temp.front, temp.back,temp.create, date, temp.access_number+1, temp.negative_result )
-            FCDatabase.getDatabase(requireContext()).flashcardDao().update(fn)
-
-        }*/
+        
 
         flashcardAnswerGroup.visibility = View.GONE
         flashcardQuestionGroup.visibility = View.VISIBLE
@@ -142,14 +134,12 @@ class FlashcardFragment : Fragment() {
             val calendar = Calendar.getInstance()
             val date = DateFormat.getDateInstance(DateFormat.SHORT).format(calendar.time)
             val temp: FlashcardNormal = activeCard.card as FlashcardNormal
-            val fn = FlashcardNormal(activeCard.card.cardId, temp.front, temp.back,temp.create, date, temp.access_number+1, temp.negative_result )
+            val fn = FlashcardNormal(activeCard.card.cardId, temp.front, temp.back,temp.create, date, temp.accessNumber+1, temp.result )
             FCDatabase.getDatabase(requireContext()).flashcardDao().update(fn)
             requireActivity().runOnUiThread{
                 nextCard()
             }
         }
-        nextCard()
-
 
     }
 
@@ -161,11 +151,10 @@ class FlashcardFragment : Fragment() {
         //Update Anzahl an Wiederholungen und negativen Antworten in Datenbank
         GlobalScope.launch {
             val temp: FlashcardNormal = activeCard.card as FlashcardNormal
-            val fn = FlashcardNormal(activeCard.card.cardId, temp.front, temp.back,temp.create, temp.access_date, temp.access_number+1, temp.negative_result+1 )
+            val fn = FlashcardNormal(activeCard.card.cardId, temp.front, temp.back,temp.create, temp.access_date, temp.accessNumber+1, temp.result+1 )
             FCDatabase.getDatabase(requireContext()).flashcardDao().update(fn)
             requireActivity().runOnUiThread{
                 nextCard()
-                Log.d("Mittle "+temp.front, "gedrückt")
 
             }
         }
@@ -184,7 +173,7 @@ class FlashcardFragment : Fragment() {
         GlobalScope.launch {
             FCDatabase.getDatabase(requireContext()).repositoryDao().update(cross)
             val temp: FlashcardNormal = activeCard.card as FlashcardNormal
-            val fn = FlashcardNormal(activeCard.card.cardId, temp.front, temp.back,temp.create, temp.access_date, temp.access_number+1, temp.negative_result+1 )
+            val fn = FlashcardNormal(activeCard.card.cardId, temp.front, temp.back,temp.create, temp.access_date, temp.accessNumber+1, temp.result+1 )
             FCDatabase.getDatabase(requireContext()).flashcardDao().update(fn)
             requireActivity().runOnUiThread {
                 nextCard()

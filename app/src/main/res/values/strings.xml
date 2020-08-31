@@ -63,4 +63,7 @@
     <string name="statmodul">Modul</string>
     <string name="heute">heute</string>
     <string name="monat">Letzte 30 Tage</string>
+    <string name="lernTermin">LernTermin</string>
+    <string name="add_termin">add new Termin</string>
+    <string name="show_termin">Show all Lerntermin</string>
 </resources>

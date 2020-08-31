@@ -1,10 +1,12 @@
 package de.hsworms.flashcards.ui.statistic
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import de.hsworms.flashcard.database.FCDatabase
 import de.hsworms.flashcard.database.entity.FlashcardNormal
@@ -65,6 +67,11 @@ class StatFrag1(repository: RepositoryWithCards) : Fragment() {
         stat_title1.textAlignment = View.TEXT_ALIGNMENT_CENTER
     }
 
+    /*
+         count Data
+         Datform mm.dd.yyyy
+     */
+
     private fun setContainHeute(){
         val calendar = Calendar.getInstance()
         val date = DateFormat.getDateInstance(DateFormat.SHORT).format(calendar.time)
@@ -74,9 +81,10 @@ class StatFrag1(repository: RepositoryWithCards) : Fragment() {
         var fail = 0
         listCard.forEach(){
             if(it.access_date == date) {
-                number++
-                repetition += it.access_number
-                fail += it.negative_result
+                if(it.accessNumber!=0)
+                    number++
+                repetition += it.accessNumber
+                fail += it.result
             }
         }
         fail=repetition-fail
@@ -94,22 +102,24 @@ class StatFrag1(repository: RepositoryWithCards) : Fragment() {
         val str = date.split("/")
 
         listCard.forEach(){
-            val tmp_date = it.access_date
+            val tmp_date = it.access_date //form mm/dd/yyyy
             val str_date = tmp_date.split("/")
             if(str[0].toInt()==str_date[0].toInt() && str[2].toInt()==str_date[2].toInt()){
-                number++
-                repetition += it.access_number
-                fail += it.negative_result
+                if(it.accessNumber!=0)
+                    number++
+                repetition += it.accessNumber
+                fail += it.result
             }
             else if(str[0].toInt()==str_date[0].toInt()+1  && str[1].toInt()<=str_date[1].toInt() && str[2].toInt()==str_date[2].toInt()){
-                number++
-                repetition += it.access_number
-                fail += it.negative_result
+                if(it.accessNumber!=0)
+                    number++
+                repetition += it.accessNumber
+                fail += it.result
             }
-            fail=repetition-fail
-            text_stat1.text= "Karte gelernt: " + number + "\n" + "Falsch: " + fail + "\n" + "Wiederholungen: " + repetition
-            text_stat1.textSize=20F
         }
+        fail=repetition-fail
+        text_stat1.text= "Karte gelernt: " + number + "\n" + "Falsch: " + fail + "\n" + "Wiederholungen: " + repetition
+        text_stat1.textSize=20F
     }
 
 }

@@ -65,7 +65,7 @@ class StatFrag2(repository: RepositoryWithCards) : Fragment() {
                 GlobalScope.launch {
                     val fc: FlashcardNormal = FCDatabase.getDatabase(requireContext()).flashcardDao().getOne(e?.data.toString().toLong()) as FlashcardNormal
                     requireActivity().runOnUiThread(){
-                        val text: String = "Frage: "+ fc.front + "\n" + fc.access_number + " Wiederholt" + "\n" + (-fc.access_number+fc.negative_result) + " geschafft."
+                        val text: String = "Frage: "+ fc.front + "\n" + fc.accessNumber + " Wiederholt" + "\n" + fc.result + " geschafft."
                         Toast.makeText(context, text, Toast.LENGTH_SHORT).show()
                     }
                 }
@@ -100,8 +100,8 @@ class StatFrag2(repository: RepositoryWithCards) : Fragment() {
                 val str_date = tmp_date.split("/")
                 if(str[0].toInt()==str_date[0].toInt() && str[2].toInt()==str_date[2].toInt()){
                     val temp: Float
-                    if(fc.access_number!=0) {
-                        temp= fc.access_number.toFloat()
+                    if(fc.accessNumber!=0) {
+                        temp= fc.accessNumber.toFloat()
                     }else{
                         temp = 1F
                     }
@@ -110,9 +110,9 @@ class StatFrag2(repository: RepositoryWithCards) : Fragment() {
                 }
                 else if(str[0].toInt()==str_date[0].toInt()+1  && str[1].toInt()<=str_date[1].toInt() && str[2].toInt()==str_date[2].toInt()) {
                     val temp: Float
-                    if(fc.access_number!=0) {
+                    if(fc.accessNumber!=0) {
                         // temp = ((fc.access_number - fc.negative_result).toFloat() / fc.access_number)
-                        temp= fc.access_number.toFloat()
+                        temp= fc.accessNumber.toFloat()
                     }else{
                         temp = 1F
                     }
